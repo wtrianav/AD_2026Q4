@@ -1,0 +1,34 @@
+REPORTE DEL DATAFRAME
+============================================================
+Filas: 775
+Columnas: 7
+Duplicados: 0
+
+Columnas y tipos:
+- restaurante: str
+- direccion: str
+- ciudad: str
+- estado: str
+- codigo_postal: str
+- latitude: float64
+- longitude: float64
+
+Valores nulos por columna:
+- restaurante: 0
+- direccion: 0
+- ciudad: 0
+- estado: 0
+- codigo_postal: 0
+- latitude: 0
+- longitude: 0
+
+Estadísticas numéricas:
+       latitude  longitude
+count   775.000    775.000
+mean     40.676    -80.353
+std       1.386      7.132
+min      30.400    -87.683
+25%      39.397    -84.253
+50%      40.710    -82.067
+75%      41.415    -76.028
+max      44.950     81.188

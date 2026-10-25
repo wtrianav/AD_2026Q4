@@ -1,0 +1,24 @@
+RESUMEN DE EJECUCIÓN - EVIDENCIA DE APRENDIZAJE 2 (EA2)
+=================================================================
+
+1. PROCESAMIENTO DE ARCHIVO CSV
+-----------------------------------
+URL de origen (Hugging Face): https://huggingface.co/datasets/JasonZhouTI/Fast_Food_Restaurants/resolve/main/FastFoodRestaurants.csv
+Archivo original importado:   datos/original.csv
+Nuevo archivo guardado en:    datos/modificado.csv
+Clase utilizada:              ManejadorCSV (manejador_csv.py)
+Métodos invocados:            importar_csv, actualizar_celda, guardar_csv
+Total registros procesados:   10000
+Modificaciones aplicadas:
+  * Actualización en fila 1, columna 'name': 'Wendy's' -> 'McDonald's Premium'
+
+2. PROCESAMIENTO DE ARCHIVO JSON
+-----------------------------------
+URL de origen (Hugging Face): https://huggingface.co/datasets/yahma/alpaca-cleaned/resolve/main/alpaca_data_cleaned.json
+Archivo original importado:   datos/original.json
+Nuevo archivo guardado en:    datos/modificado.json
+Clase utilizada:              ManejadorJSON (manejador_json.py)
+Métodos invocados:            importar_json, actualizar_registro, guardar_json
+Total registros procesados:   51760
+Modificaciones aplicadas:
+  * Actualización en registro [0], clave 'instruction': 'Give three tips for staying healthy.' -> 'MODIFICADO_PARA_AE2'
