@@ -1,4 +1,4 @@
-name: Ejecutar Evidencias EA1 y AE2
+name: Ejecutar Evidencias EA1 y EA2
 
 on:
     push:
@@ -43,22 +43,23 @@ jobs:
                   source ../.venv/bin/activate
                   jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=1800 EA1_Carga_Transformacion.ipynb
 
-            - name: Paso 5 - Ejecutar Notebook AE2
-              working-directory: AE2
+
+            - name: Paso 5 - Ejecutar Notebook EA2
+              working-directory: EA2
               run: |
                   source ../.venv/bin/activate
-                  jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=1800 AE2_Manejo_Archivos.ipynb
+                  jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=1800 EA2_Manejo_Archivos.ipynb
 
             - name: Paso 6 - Confirmar cambios generados
               run: |
                   git config user.name "github-actions[bot]"
                   git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-                  git add EA1/ AE2/
+                  git add EA1/ EA2/
 
                   if git diff --cached --quiet; then
                     echo "No se generaron cambios nuevos."
                     exit 0
                   fi
 
-                  git commit -m "chore: Actualiza salidas automaticas de EA1 y AE2 [skip ci]"
+                  git commit -m "chore: Actualiza salidas automaticas de EA1 y EA2 [skip ci]"
                   git push origin HEAD:main
