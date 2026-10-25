@@ -1,0 +1,64 @@
+name: Ejecutar Evidencias EA1 y AE2
+
+on:
+    push:
+        branches:
+            - main
+
+permissions:
+    contents: write
+
+concurrency:
+    group: ejecutar-evidencias-main
+    cancel-in-progress: false
+
+jobs:
+    ejecutar-notebooks:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Paso 1 - Descargar repositorio
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - name: Paso 2 - Configurar Python
+              uses: actions/setup-python@v5
+              with:
+                  python-version: '3.14.2'
+                  cache: pip
+                  cache-dependency-path: requirements.txt
+
+            - name: Paso 3 - Crear entorno virtual e instalar dependencias
+              run: |
+                  python -m venv .venv
+                  source .venv/bin/activate
+                  python -m pip install --upgrade pip
+                  python -m pip install -r requirements.txt
+                  python -m pip install pyarrow openpyxl
+
+            - name: Paso 4 - Ejecutar Notebook EA1
+              working-directory: EA1
+              run: |
+                  source ../.venv/bin/activate
+                  jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=1800 EA1_Carga_Transformacion.ipynb
+
+            - name: Paso 5 - Ejecutar Notebook AE2
+              working-directory: AE2
+              run: |
+                  source ../.venv/bin/activate
+                  jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=1800 AE2_Manejo_Archivos.ipynb
+
+            - name: Paso 6 - Confirmar cambios generados
+              run: |
+                  git config user.name "github-actions[bot]"
+                  git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+                  git add EA1/ AE2/
+
+                  if git diff --cached --quiet; then
+                    echo "No se generaron cambios nuevos."
+                    exit 0
+                  fi
+
+                  git commit -m "chore: Actualiza salidas automaticas de EA1 y AE2 [skip ci]"
+                  git push origin HEAD:main
