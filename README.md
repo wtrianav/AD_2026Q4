@@ -1,6 +1,6 @@
 # AD_2026Q4 - Analítica de Datos
 
-Repositorio colaborativo del curso **Analítica de Datos** (Ingeniería de Software y Datos). Contiene las clases reutilizables de Python, los flujos de trabajo en Jupyter Notebook y la generación automatizada de reportes `.txt` para las evidencias de aprendizaje (`EA1` y `AE2`).
+Repositorio colaborativo del curso **Analítica de Datos** (Ingeniería de Software y Datos). Contiene las clases reutilizables de Python, los flujos de trabajo en Jupyter Notebook y la generación automatizada de reportes `.txt` para las evidencias de aprendizaje (`EA1` y `EA2`).
 
 ## Estructura del Proyecto
 
@@ -18,7 +18,7 @@ AD_2026Q4/
 │   ├── reportes/
 │   │   └── resumen_transformado.txt      # Resumen del DataFrame tras las 4 transformaciones
 │   └── EA1_Carga_Transformacion.ipynb    # Notebook orquestador de la EA1
-├── AE2/                                  # Evidencia de Aprendizaje 2: Manejo de CSV, JSON y TXT
+├── EA2/                                  # Evidencia de Aprendizaje 2: Manejo de CSV, JSON y TXT
 │   ├── datos/
 │   │   ├── original.csv                  # CSV descargado manualmente de Hugging Face
 │   │   ├── modificado.csv                # Nuevo CSV generado con csv.writer
@@ -27,7 +27,7 @@ AD_2026Q4/
 │   ├── manejador_csv.py                  # ManejadorCSV: lectura, modificación y guardado de CSV
 │   ├── manejador_json.py                 # ManejadorJSON: lectura, modificación y guardado de JSON
 │   ├── generador_resumen_txt.py          # GeneradorResumenTXT: consolidación del reporte final
-│   ├── AE2_Manejo_Archivos.ipynb         # Notebook orquestador de la AE2
+│   ├── EA2_Manejo_Archivos.ipynb         # Notebook orquestador de la EA2
 │   └── resumen.txt                       # Resumen de ejecución con URLs de origen y cambios
 ├── .gitignore
 ├── requirements.txt
@@ -89,14 +89,14 @@ pip install -r requirements.txt
    * Aplica **4 transformaciones distintas** al DataFrame (limpieza de nulos, renombrado de columnas, filtrado condicional y selección/ordenamiento).
    * Genera y guarda el resumen estadístico y estructural en `EA1/reportes/resumen_transformado.txt`.
 
-### Evidencia 2 (`AE2`): Manejo de Archivos CSV, JSON y TXT mediante Clases
-1. Abre el archivo `AE2/AE2_Manejo_Archivos.ipynb` en Visual Studio Code.
-2. Verifica que los archivos descargados manualmente de Hugging Face se encuentren en `AE2/datos/original.csv` y `AE2/datos/original.json`.
+### Evidencia 2 (`EA2`): Manejo de Archivos CSV, JSON y TXT mediante Clases
+1. Abre el archivo `EA2/EA2_Manejo_Archivos.ipynb` en Visual Studio Code.
+2. Verifica que los archivos descargados manualmente de Hugging Face se encuentren en `EA2/datos/original.csv` y `EA2/datos/original.json`.
 3. Ejecuta todas las celdas en orden (**Run All**):
    * Registra en variables las URL específicas de origen de Hugging Face para ambos formatos.
    * Importa y modifica los datos locales usando `ManejadorCSV` (`csv.reader` / `csv.writer`) y `ManejadorJSON` (`json.load` / `json.dump`), mostrando el antes y el después.
-   * Guarda los archivos modificados en `AE2/datos/modificado.csv` y `AE2/datos/modificado.json` conservando los originales.
-   * Invoca `GeneradorResumenTXT` para generar mediante código el archivo `AE2/resumen.txt` con las URLs de origen, clases/métodos usados, conteo de registros y detalle de las modificaciones.
+   * Guarda los archivos modificados en `EA2/datos/modificado.csv` y `EA2/datos/modificado.json` conservando los originales.
+   * Invoca `GeneradorResumenTXT` para generar mediante código el archivo `EA2/resumen.txt` con las URLs de origen, clases/métodos usados, conteo de registros y detalle de las modificaciones.
 
 ---
 
