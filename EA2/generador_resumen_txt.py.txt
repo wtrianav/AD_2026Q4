@@ -13,7 +13,7 @@ class GeneradorResumenTXT:
     def generar_resumen(self, resultado_csv: dict[str, Any], resultado_json: dict[str, Any]) -> str:
         """Construye y guarda el archivo .txt con los datos reales de la ejecución."""
         lineas = [
-            "RESUMEN DE EJECUCIÓN - EVIDENCIA DE APRENDIZAJE 2 (AE2)",
+            "RESUMEN DE EJECUCIÓN - EVIDENCIA DE APRENDIZAJE 2 (EA2)",
             "=" * 65,
             "",
             "1. PROCESAMIENTO DE ARCHIVO CSV",
