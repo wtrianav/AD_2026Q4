@@ -1,4 +1,4 @@
-name: Ejecutar Evidencias EA1 y EA2
+name: Ejecutar Evidencias EA1, EA2 y EA3
 
 on:
     push:
@@ -50,16 +50,24 @@ jobs:
                   source ../.venv/bin/activate
                   jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=1800 EA2_Manejo_Archivos.ipynb
 
-            - name: Paso 6 - Confirmar cambios generados
+            - name: Paso 6 - Ejecutar Notebook EA3
+              working-directory: EA3
+              run: |
+                  source ../.venv/bin/activate
+                  jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=1800 EA3_Comparacion_Climatica.ipynb
+
+            - name: Paso 7 - Confirmar cambios generados
               run: |
                   git config user.name "github-actions[bot]"
                   git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-                  git add EA1/ EA2/
+                  
+                  # Se agrega la carpeta EA3 al commit automático
+                  git add EA1/ EA2/ EA3/
 
                   if git diff --cached --quiet; then
                     echo "No se generaron cambios nuevos."
                     exit 0
                   fi
 
-                  git commit -m "chore: Actualiza salidas automaticas de EA1 y EA2 [skip ci]"
+                  git commit -m "chore: se actualizan salidas automaticas de EA1, EA2 y EA3 [skip ci]"
                   git push origin HEAD:main
